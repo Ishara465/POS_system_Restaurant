@@ -23,6 +23,8 @@ app.get("/", (req, res) => {
 
 //TODO: Other Endpoints
 app.use("/api/user", require("./routes/userRoute.js"));
+app.use("/api/order", require("./routes/orderRoute.js"));
+app.use("/api/table", require("./routes/tableRoute.js"));
 
 //TODO Global Error Handler
 app.use(globalErrorHandler);
