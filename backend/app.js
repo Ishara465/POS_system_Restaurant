@@ -2,6 +2,7 @@ require("dotenv").config();
 const express = require("express");
 const app = express();
 const cookieParser = require("cookie-parser");
+const cors = require("cors");
 
 const connectDB = require("./config/database.js");
 const config = require("./config/config.js");
@@ -12,6 +13,12 @@ const PORT = config.port;
 connectDB();
 
 //TODO Middleware
+app.use(
+  cors({
+    credentials: true,
+    origin: ["http://localhost:5173"],
+  })
+); //? Enable CORS for all routes
 app.use(express.json()); //? parse incoming requests with JSON format
 app.use(cookieParser());
 
