@@ -9,6 +9,7 @@ import { useMutation } from "@tanstack/react-query";
 import { logout } from "../../https/index.js";
 import { removeUser } from "../../redux/slices/userSlice.js";
 import { useNavigate } from "react-router-dom";
+import { MdDashboard } from "react-icons/md";
 
 const Headers = () => {
   const userData = useSelector((state) => state.user);
@@ -34,7 +35,10 @@ const Headers = () => {
   return (
     <header className="flex justify-between items-center py-4 px-8 bg-[#1a1a1a]">
       {/* Logo */}
-      <div className="flex items-center gap-2">
+      <div
+        onClick={() => navigate("/")}
+        className="flex items-center gap-2 cursor-pointer"
+      >
         <CiForkAndKnife className="text-[#f5f5f5] h-6 w-6 font-semibold" />
         <h1 className="text-lg font-semibold text-[#f5f5f5]">Restro</h1>
       </div>
@@ -50,7 +54,17 @@ const Headers = () => {
       </div>
 
       {/* Logged user details */}
+
       <div className="flex items-center gap-4">
+        {userData.role === "Admin" && (
+          <div
+            className="bg-[#1f1f1f] rounded-[15px] p-3 cursor-pointer"
+            onClick={() => navigate("/dashboard")}
+          >
+            <MdDashboard className="text-[#f5f5f5] text-2xl" />
+          </div>
+        )}
+
         <div className="bg-[#1f1f1f] rounded-[15px] p-3 cursor-pointer">
           <FaBell className="text-[#f5f5f5] text-2xl" />
         </div>
