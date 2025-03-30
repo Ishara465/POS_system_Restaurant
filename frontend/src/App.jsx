@@ -5,7 +5,7 @@ import {
   useLocation,
   Navigate,
 } from "react-router-dom";
-import { Home, Auth, Orders, Tables, Menu } from "./pages/index.js";
+import { Home, Auth, Orders, Tables, Menu, Dashboard } from "./pages/index.js";
 import Headers from "./components/shared/Headers.jsx";
 import { useSelector } from "react-redux";
 import useLoadData from "./hooks/useLoadData.js";
@@ -52,6 +52,15 @@ function Layout() {
           element={
             <ProtectedRoute>
               <Menu />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/dashboard"
+          element={
+            <ProtectedRoute>
+              <Dashboard />
             </ProtectedRoute>
           }
         />
